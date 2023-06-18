@@ -1,13 +1,27 @@
 ---
-- hosts:  all
-  become: yes
 - name: Ensure apt dependencies are present
-  tasks:
-    apt:
-      - python3-dev
-      - python3-pip
-      - python3-virtualenv
-      - virtualenv
-      - nginx
-      - git
+  apt:
+    name:
+    - python3-dev
+    - python3-pip
+    - python3-virtualenv
+    - virtualenv
+    - nginx
+    - git
   state: present
+
+- name: Ensure nginx service started
+  systemd:
+    name: nginx
+  state: started
+
+- name: Add the user running webapp
+  user:
+    name: "flask"
+    state: present
+    append: yes # important pour ne pas supprimer les groupes d'un utilisateur existant
+    groups:
+      - "www-data"
+
+
+
