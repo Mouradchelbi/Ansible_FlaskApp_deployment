@@ -1,0 +1,5 @@
+- hosts: <hotes_cible>
+  
+  tasks:
+    - name: ping
+      ping:
