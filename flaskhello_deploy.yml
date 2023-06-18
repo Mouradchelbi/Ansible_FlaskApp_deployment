@@ -1,5 +1,4 @@
-- hosts: app1 
-  
+- hosts:  app1 
   tasks:
     - name: ping
       ping:
