@@ -1,4 +1,4 @@
-- hosts: <hotes_cible>
+- hosts: app1 
   
   tasks:
     - name: ping
